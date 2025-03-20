@@ -1,0 +1,144 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>GUÍA HARDENING ROUTER ASUS RT-AX95Q</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="bastionado-router-asus-rt-ax95q"
+                  title="GUÍA HARDENING ROUTER ASUS RT-AX95Q"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introducción" duration="0">
+        <p class="image-container"><img src="img\\26f49c0d2014a222.png"></p>
+<p>Para elaborar esta guía hemos seguido las mejores prácticas de seguridad identificadas en los recursos técnicos disponibles. A continuación se muestran los pasos que hemos seguido para bastionar este router:</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Actualización de firmware" duration="0">
+        <p>Debemos verificar que el router tenga la versión más reciente del <strong>firmware</strong>, ya que las actualizaciones suelen corregir vulnerabilidades y mejorar la estabilidad y seguridad.</p>
+<p>Para ello accedemos a <strong>Administración &gt; Firmware Upgrade</strong> y pulsamos en el botón en <strong>Check Update</strong> para comprobar si hay actualizaciones disponibles.</p>
+<p class="image-container"><img src="img\\4dc687261980942f.png"></p>
+<p class="image-container"><img src="img\\a1845a958f0a7cce.png"></p>
+<p class="image-container"><img src="img\\581e70c45c9af2f7.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Gestión de credenciales y acceso administrativo" duration="0">
+        <p>Ahora nos movemos a <strong>Administration &gt; System</strong>.</p>
+<p>En primer lugar cambiamos el <strong>usuario</strong> y <strong>contraseña</strong> predeterminados del <strong>panel administrativo</strong>.</p>
+<p class="image-container"><img src="img\\c96d30127039b833.png"></p>
+<p class="image-container"><img src="img\\3de0c563d9ddc69b.png"></p>
+<p><strong>Nota:</strong> Usar contraseñas de <strong>mínimo 12 caracteres</strong> con combinación de <strong>mayúsculas, números y símbolos</strong>.</p>
+<p>Ahora cambiaremos el <strong>método de autenticación</strong> a <strong>HTTPS</strong> para añadir una capa de cifrado a la conexión al acceder a la administración del router.</p>
+<p class="image-container"><img src="img\\d0758cc7964fd57e.png"></p>
+<p>Opcionalmente podemos cambiar el <strong>puerto de administración HTTPS</strong> para mayor seguridad.</p>
+<p class="image-container"><img src="img\\b74838d3ee708d19.png"></p>
+<p>Si no necesitamos gestionar el router desde fuera de la red local podemos <strong>deshabilitar el acceso remoto (WAN Access).</strong></p>
+<p class="image-container"><img src="img\\354059a820fff82.png"></p>
+<p>También podemos deshabilitar <strong>Telnet</strong> y <strong>SSH</strong> en caso de no necesitarlos.</p>
+<p class="image-container"><img src="img\\d983080328f8c0a2.png"></p>
+<p>Finalmente pulsamos <strong>Apply</strong> para guardar todos los cambios.</p>
+<p class="image-container"><img src="img\\e446f02c1399bf3a.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Encriptación inalámbrica" duration="0">
+        <p>Ahora nos desplazamos a <strong>Wireless &gt; General</strong>.</p>
+<p class="image-container"><img src="img\\d86e0bb445ac4b53.png"></p>
+<p>En primer lugar cambiamos el <strong>SSID</strong> por defecto y <strong>lo ocultamos</strong> para dificultar su detección.</p>
+<p class="image-container"><img src="img\\3494fa1b4c08480c.png"></p>
+<p>Luegp seleccionamos <strong>WPA3-Personal</strong> como método de autenticación.</p>
+<p class="image-container"><img src="img\\229a2cec2efdb664.png"></p>
+<p class="image-container"><img src="img\\69581d84513d0369.png"></p>
+<p><strong>Nota:</strong> Al seleccionar <strong>WPA3-Personal</strong> debemos establecer los <strong>Protected Management Frames</strong> en <strong>Required</strong>. Si necesitarámos <strong>compatibilidad con dispositivos antiguos</strong> dejaremos el método de autenticación en <strong>WPA2-Personal</strong> con cifrado <strong>AES</strong>.</p>
+<p>Por último cambiamos la <strong>contraseña por defecto de la red Wi-Fi</strong>. Deberíamos establecer una contraseña diferente a la que pusimos para el <strong>login</strong> para mayor seguridad.</p>
+<p class="image-container"><img src="img\\be43f592ca6a6f96.png"></p>
+<p>Pulsamos <strong>Apply</strong> para guardar los cambios.</p>
+<p class="image-container"><img src="img\\29c4eda14862a1ac.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Segmentación de red" duration="0">
+        <p>En primer lugar crearemos una <strong>red para invitados</strong>  de modo que los dispositivos de visitantes no tengan acceso a nuestra <strong>red interna (Access Intranet &gt; Disable)</strong> ni a <strong>dispositivos críticos</strong>.</p>
+<p>Para ello vamos a <strong>Guest Network</strong> y la activamos en <strong>2.4 ó 5 GHz</strong> pulsando el botón <strong>Enable</strong>. En nuestro caso hemos escogido la opción de <strong>2.4 GHz</strong>.</p>
+<p class="image-container"><img src="img\\a1b799625ad116dd.png"></p>
+<p class="image-container"><img src="img\\933f1e5a04e40187.png"></p>
+<p class="image-container"><img src="img\\3bc1741348dc3e3b.png"></p>
+<p>Ahora habilitaremos el <strong>Aislamiento de clientes</strong> para evitar que los clientes inalámbricos puedan comunicarse entre ellos y añadir así una capa extra de seguridad.</p>
+<p>Para ello vamos a <strong>Wireless &gt; Professional</strong> y habilitamos la opción <strong>Set AP Isolated</strong>.</p>
+<p class="image-container"><img src="img\\54d2138294f66141.png"></p>
+<p class="image-container"><img src="img\\b9763bf610b45b37.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Protección avanzada" duration="0">
+        <p>Ahora nos vamos a <strong>AiProtection &gt; Network Protection</strong> y habilitamos las siguientes características:</p>
+<ul>
+<li>Protección contra intrusiones <strong>(Two-Way IPS)</strong></li>
+<li>Bloqueo de sitios maliciosos <strong>(Malicious Sites Blocking)</strong></li>
+<li>Protección contra dispositivos infectados <strong>(Infected Device Prevention and Blocking)</strong></li>
+</ul>
+<p class="image-container"><img src="img\\8b4edbc32aca7bd7.png"></p>
+<p class="image-container"><img src="img\\b6d74ee17534b511.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configuración del firewall" duration="0">
+        <p>A continuación nos vamos a <strong>Firewall &gt; General</strong> y habilitamos la protección contra ataques DoS <strong>(DoS Protection)</strong>:</p>
+<p class="image-container"><img src="img\\dbe8cc20a25cb664.png"></p>
+<p class="image-container"><img src="img\\76a2e4b663ee8eed.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Mantenimiento y Monitoreo" duration="0">
+        <p>Podemos programar <strong>reinicios periódicos</strong> en <strong>Administration &gt; System &gt; Reboot Scheduler</strong> para <strong>limpiar conexiones</strong> y <strong>minimizar los fallos de servicio</strong>.</p>
+<p>En nuestro caso programamos <strong>reinicios</strong> los <strong>domingos</strong> a las <strong>03:00 AM</strong>.</p>
+<p class="image-container"><img src="img\\8be1d78dfdbbde77.png"></p>
+<p>También tenemos la posibilidad de realizar <strong>copias de seguridad de la configuración</strong> en <strong>Administration &gt; Restore/Save/Upload Setting</strong>.</p>
+<p class="image-container"><img src="img\\c9122886a0573617.png"></p>
+<p>Para <strong>guardar la configuración actual</strong> tendremos que hacer clic en <strong>Save setting</strong>, mientras que para <strong>cargar una configuración guardada</strong> trndremos que pinchar en <strong>Upload</strong>.</p>
+<p>También deberíamos acceder periódicamente al <strong>registro (System Log)</strong> y a la sección de <strong>Network Map</strong> para identificar <strong>actividad inusual o dispositivos desconocidos</strong>.</p>
+<p class="image-container"><img src="img\\cadb26eb02e65fa1.png"></p>
+<p class="image-container"><img src="img\\b149653bd74a1b15.png"></p>
+<p class="image-container"><img src="img\\aa35c10086e98eaa.png"></p>
+<p class="image-container"><img src="img\\ab683df6bccd8d96.png"></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-03-20T12:15:33+01:00",
+  "id": "bastionado-router-asus-rt-ax95q",
+  "duration": 0,
+  "title": "GUÍA HARDENING ROUTER ASUS RT-AX95Q",
+  "summary": "Guía para bastionar router ASUS RT-AX95Q",
+  "source": "Guia_ASUS_RTAX95Q.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "seguridad",
+    "redes",
+    "configuración"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "bastionado-router-asus-rt-ax95q"
+}
